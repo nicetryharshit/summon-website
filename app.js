@@ -2,12 +2,12 @@
   'use strict';
   document.documentElement.classList.add('js');
   const shots = [
-    { file: 'warm-paper-search.png', theme: 'paper', name: 'Warm Paper', detail: 'File search', label: 'THE EVERYDAY SIDEKICK', title: 'Find it. Launch it. On with your day.', alt: 'Summon in the Warm Paper theme showing a file search for notes' },
-    { file: 'midnight-search.png', theme: 'midnight', name: 'Midnight', detail: 'File search', label: 'FOR YOUR DARK SIDE', title: 'Same quick search. A moodier look.', alt: 'Summon in the Midnight theme showing a file search with a dark navy interface' },
-    { file: 'dot-matrix-search-bar.png', theme: 'matrix', name: 'Dot Matrix', detail: 'Search bar', label: 'A LITTLE RETRO ENERGY', title: 'Your next move starts with a few keys.', alt: 'Summon search bar in the Dot Matrix theme against a dotted background' },
-    { file: 'dot-matrix-commands.png', theme: 'matrix', name: 'Dot Matrix', detail: 'Quick commands', label: 'SMALL TASKS, MEET SHORTCUTS', title: 'A slash. A command. Consider it done.', alt: 'Summon in the Dot Matrix theme displaying its built-in slash commands' },
-    { file: 'dot-matrix-ai-answer.png', theme: 'matrix', name: 'Dot Matrix', detail: 'AI answer', label: 'A QUESTION? ASK AWAY.', title: 'A little help, right where you are.', alt: 'Summon in the Dot Matrix theme showing an AI answer comparing TCP and UDP' },
-    { file: 'dot-matrix-minimal-bar.png', theme: 'matrix', name: 'Dot Matrix', detail: 'Minimal bar', label: 'JUST THE ESSENTIALS', title: 'A small footprint. A personal touch.', alt: 'A minimal Summon search bar in the Dot Matrix theme' }
+    { file: 'warm-paper-search.png', theme: 'paper', name: 'Warm Paper', detail: 'File search', alt: 'Summon in the Warm Paper theme showing a file search for notes' },
+    { file: 'midnight-search.png', theme: 'midnight', name: 'Midnight', detail: 'File search', alt: 'Summon in the Midnight theme showing a file search with a dark navy interface' },
+    { file: 'dot-matrix-search-bar.png', theme: 'matrix', name: 'Dot Matrix', detail: 'Search bar', alt: 'Summon search bar in the Dot Matrix theme against a dotted background' },
+    { file: 'dot-matrix-commands.png', theme: 'matrix', name: 'Dot Matrix', detail: 'Quick commands', alt: 'Summon in the Dot Matrix theme displaying its built-in slash commands' },
+    { file: 'dot-matrix-ai-answer.png', theme: 'matrix', name: 'Dot Matrix', detail: 'AI answer', alt: 'Summon in the Dot Matrix theme showing an AI answer comparing TCP and UDP' },
+    { file: 'dot-matrix-minimal-bar.png', theme: 'matrix', name: 'Dot Matrix', detail: 'Minimal bar', alt: 'A minimal Summon search bar in the Dot Matrix theme' }
   ];
   const byId = id => document.getElementById(id);
   const showcase = byId('looks');
@@ -35,10 +35,8 @@
     image.alt = shot.alt;
     byId('previous-image').src = path(shots[(index + shots.length - 1) % shots.length]);
     byId('next-image').src = path(shots[(index + 1) % shots.length]);
-    byId('card-theme').textContent = `${shot.name.toLowerCase().replaceAll(' ', '-')}.summon`;
-    byId('shot-label').textContent = shot.label;
-    byId('shot-title').textContent = shot.title;
-    byId('shot-number').textContent = pad(index + 1);
+    byId('card-theme').textContent = shot.name;
+    byId('shot-title').textContent = shot.detail;
     byId('count').textContent = `${pad(index + 1)} / ${pad(shots.length)}`;
     byId('carousel-status').textContent = `Screenshot ${index + 1} of ${shots.length}: ${shot.name} — ${shot.detail}`;
     byId('expand').setAttribute('aria-label', `Enlarge screenshot: ${shot.name} ${shot.detail}`);
